@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Variants } from 'framer-motion';
-import { Shield, Bell, AlertTriangle, Wifi, WifiOff, Loader2, CheckCircle2, XCircle, Globe } from 'lucide-react';
+import { Shield, Bell, AlertTriangle, Wifi, WifiOff, Loader2, CheckCircle2, XCircle, Globe, Key } from 'lucide-react';
 
 const Settings: React.FC = () => {
   // Connection state
