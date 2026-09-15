@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 import { mockOrders } from '../data/mockData';
 
 const Orders: React.FC = () => {
@@ -7,8 +8,8 @@ const Orders: React.FC = () => {
 
   const filtered = filter === 'all' ? mockOrders : mockOrders.filter(o => o.status === filter);
 
-  const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.04 } } };
-  const item = { hidden: { opacity: 0, y: 15 }, show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 150, damping: 20 } } };
+  const container: Variants = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.04 } } };
+  const item: Variants = { hidden: { opacity: 0, y: 15 }, show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 150, damping: 20 } } };
 
   const statusColor = (s: string) => {
     if (s === 'Open') return 'bg-[var(--color-accent)]/10 text-[var(--color-accent)] border-[var(--color-accent)]/20';

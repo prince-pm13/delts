@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Bot, Play, Pause, Square, Plus, ArrowLeft, AlertTriangle, TrendingUp, Clock, Activity } from 'lucide-react';
+import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
+import { Bot, Play, Pause, Square, Plus, ArrowLeft } from 'lucide-react';
 
 interface BotConfig {
   id: number;
@@ -53,10 +54,9 @@ const mockBots: BotConfig[] = [
 
 const Bots: React.FC = () => {
   const [selectedBot, setSelectedBot] = useState<BotConfig | null>(null);
-  const [confirmAction, setConfirmAction] = useState<{ id: number; action: string } | null>(null);
 
-  const container = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.06 } } };
-  const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 120, damping: 18 } } };
+  const container: Variants = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.06 } } };
+  const item: Variants = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 120, damping: 18 } } };
 
   const statusStyles = (s: string) => {
     if (s === 'running') return { dot: 'bg-[var(--color-bull)] shadow-[0_0_8px_var(--color-bull)]', text: 'text-[var(--color-bull)]', bg: 'bg-[var(--color-bull)]/10 border-[var(--color-bull)]/20' };
@@ -65,7 +65,6 @@ const Bots: React.FC = () => {
   };
 
   if (selectedBot) {
-    const st = statusStyles(selectedBot.status);
     return (
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
         <button onClick={() => setSelectedBot(null)} className="flex items-center gap-2 text-[var(--color-text-muted)] hover:text-white transition-colors text-sm cursor-pointer">

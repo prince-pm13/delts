@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Variants } from 'framer-motion';
-import { Key, Shield, Bell, AlertTriangle, RotateCcw, Trash2, Copy, Check, Eye, EyeOff, Wifi, WifiOff, Loader2, CheckCircle2, XCircle, Globe } from 'lucide-react';
+import { Shield, Bell, AlertTriangle, Wifi, WifiOff, Loader2, CheckCircle2, XCircle, Globe } from 'lucide-react';
 
 const Settings: React.FC = () => {
   // Connection state
@@ -12,11 +12,7 @@ const Settings: React.FC = () => {
   const [connectStatus, setConnectStatus] = useState<'idle' | 'verifying' | 'success' | 'error'>('idle');
   const [showConnectForm, setShowConnectForm] = useState(false);
 
-  // API Key state
-  const [showKey, setShowKey] = useState(false);
-  const [copied, setCopied] = useState(false);
-  const [revokeConfirm, setRevokeConfirm] = useState(false);
-  const [rotateConfirm, setRotateConfirm] = useState(false);
+  
 
   const handleConnect = async () => {
     if (!connectKey || !connectSecret) return;
@@ -59,14 +55,7 @@ const Settings: React.FC = () => {
     riskLimitHit: true,
   });
 
-  const mockApiKey = 'dx_live_a3f8k29x7m1nQ4pR';
-  const maskedKey = '••••••••••••' + mockApiKey.slice(-4);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(mockApiKey);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
 
   const toggleNotification = (key: keyof typeof notifications) => {
     setNotifications(prev => ({ ...prev, [key]: !prev[key] }));
