@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 import { Key, Shield, Bell, AlertTriangle, RotateCcw, Trash2, Copy, Check, Eye, EyeOff, Wifi, WifiOff, Loader2, CheckCircle2, XCircle, Globe } from 'lucide-react';
 
 const Settings: React.FC = () => {
@@ -71,11 +72,11 @@ const Settings: React.FC = () => {
     setNotifications(prev => ({ ...prev, [key]: !prev[key] }));
   };
 
-  const container = {
+  const container: Variants = {
     hidden: { opacity: 0 },
     show: { opacity: 1, transition: { staggerChildren: 0.06 } }
   };
-  const item = {
+  const item: Variants = {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 120, damping: 18 } }
   };
